@@ -1,0 +1,31 @@
+{
+  "name": "sensors_backend",
+  "version": "1.0.0",
+  "description": "Schare db data through endpoints",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Bartosz95/sensors_backend.git"
+  },
+  "keywords": [
+    "sensor",
+    "sensors",
+    "backend"
+  ],
+  "author": "Bartosz Lenartowicz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bartosz95/sensors_backend/issues"
+  },
+  "homepage": "https://github.com/Bartosz95/sensors_backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
