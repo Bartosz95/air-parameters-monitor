@@ -26,7 +26,7 @@ router.get('/temperature', async (req, res) => {
 
 router.get('/pressure', async (req, res) => {
     try {
-        const sensorData = await SensorData.find({},{_id:0, time:1, pressure:1,}, {limit:30, sort: { time: -1 } }, function (err, data) {
+        const sensorData = await SensorData.find({},{_id:0, time:1, pressure:1}, {limit:30, sort: { time: -1 } }, function (err, data) {
             if (err) return console.error(err);
             res.json(data);
         }).exec();
