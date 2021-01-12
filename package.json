@@ -4,7 +4,7 @@
   "description": "Schare db data through endpoints",
   "main": "index.js",
   "scripts": {
-    "start": "npm index",
+    "start": "node index",
     "dev": "nodemon index"
   },
   "repository": {
