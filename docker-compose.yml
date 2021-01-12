@@ -11,17 +11,15 @@ services:
       - db_data:/data/db
 
   sensors_api:
-  depends_on: 
-    - 'mongodb_container'
-  build:
-    context: .
-    dockerfile: Dockerfile
-  ports:
-    - '3000:3000'
-  environment: 
-    DB_CONNECTION=mongodb://mongo:27017/sensors
-    BASE_URL="/api/v1"
-    PORT=3000
-
-    volumes:
+    image: 
+      bartosz95/sensors_api:latest
+    depends_on: 
+      - 'mongodb_container'
+    ports:
+      - '3000:3000'
+    environment: 
+      DB_CONNECTION=mongodb://root:password@mongo:27017/sensors
+      BASE_URL="/api/v1"
+      PORT=3000
+volumes:
   db_data:
