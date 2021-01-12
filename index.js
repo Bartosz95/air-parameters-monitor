@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv/config');
 const gets = require('./routers/gets');
+const posts = require('./routers/posts');
 
 const PORT = process.env.PORT || 3000;
 const BASE_URL = process.env.BASE_URL || '/api/v1';
@@ -24,5 +25,6 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 
 app.use(BASE_URL, gets);
+app.use(BASE_URL, posts);
 
 app.listen(PORT, () => console.log(`Running on http://localhost:${PORT}${BASE_URL}`));
