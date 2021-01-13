@@ -17,7 +17,7 @@ services:
     depends_on: 
       - 'mongodb'
     ports:
-      - "127.0.0.1:3000:3000"
+      - "3000:3000"
     env_file: .env
     environment:
       - APP_HOSTNAME=$APP_HOSTNAME
