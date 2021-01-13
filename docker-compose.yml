@@ -1,24 +1,33 @@
 version: '3.7'
 services:
-  mongodb_container:
+  mongodb:
     image: mongo:latest
-    ports:
-      - 27017:27017
+    container_name: mongodb
     volumes:
       - db_data:/data/db
+    env_file: .env
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+  
   sensors_api:
-    image: 
-      bartosz95/sensors_api:latest
+    build: .
+      context: .
+      dockerfile: Dockerfile
     depends_on: 
-      - 'mongodb_container'
+      - 'mongodb'
     ports:
-      - '3000:3000'
-    environment: 
-      - DB_CONNECTION=mongodb://root:password@mongo:27017/sensors
-      - BASE_URL="/api/v1"
-      - PORT=3000
+      - "127.0.0.1:3000:3000"
+    env_file: .env
+    environment:
+      - APP_HOSTNAME=$APP_HOSTNAME
+      - APP_PORT=$APP_PORT
+      - APP_PATH=$APP_PATH
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=mongodb
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DBNAME=$MONGO_DBNAME
+
 volumes:
   db_data:

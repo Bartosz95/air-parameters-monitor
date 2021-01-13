@@ -4,5 +4,5 @@ WORKDIR /opt/project
 COPY package*.json ./
 RUN npm i
 COPY . .
-EXPOSE 3000 27017 
+EXPOSE 3000
 CMD [ "npm", "start" ]

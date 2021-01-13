@@ -5,11 +5,29 @@ require('dotenv/config');
 const gets = require('./routers/gets');
 const posts = require('./routers/posts');
 
-const PORT = process.env.PORT || 3000;
-const BASE_URL = process.env.BASE_URL || '/api/v1';
-const DB_CONNECTION = process.env.DB_CONNECTION;
 
-mongoose.connect(DB_CONNECTION, {useNewUrlParser: true, useUnifiedTopology: true});
+const {
+  APP_HOSTNAME,
+  APP_PORT,
+  APP_PATH,
+  MONGO_USERNAME,
+  MONGO_PASSWORD,
+  MONGO_HOSTNAME,
+  MONGO_PORT,
+  MONGO_DBNAME
+} = process.env;
+
+const options = {
+  useNewUrlParser: true,
+  reconnectTries: Number.MAX_VALUE,
+  reconnectInterval: 500,
+  connectTimeoutMS: 10000,
+  useNewUrlParser: true, 
+  useUnifiedTopology: true
+};
+
+const MONGO_URL = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DBNAME}?authSource=admin`;
+mongoose.connect(MONGO_URL, options);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {});
@@ -24,7 +42,7 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json());
 
-app.use(BASE_URL, gets);
-app.use(BASE_URL, posts);
+app.use(APP_PATH, gets);
+app.use(APP_PATH, posts);
 
-app.listen(PORT, () => console.log(`Running on http://localhost:${PORT}${BASE_URL}`));
+app.listen(APP_HOSTNAME, APP_PORT, () => console.log(`Running on http://${APP_HOSTNAME}:${APP_PORT}${APP_PATH}`));
