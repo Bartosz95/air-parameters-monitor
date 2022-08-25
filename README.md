@@ -28,7 +28,7 @@ System consists of four components:
 - API which handle endpoints and save data to DB, 
 - GUI display information to the user.
 
-Comunication between components is wireless. It means that every component can be in difference localization. The data are send by WiFi.
+Comunication between components works throught http interface. It means that every component can be in difference localization and data are send wireless.
 On scheme below we can see these four component. On the left we can see a sensor which is build in Raspberry PI with Sense HAT extenssion. On this programmable board is installed program written in Python which deliver air parameters to API. API gets requests from sensor and write information to MongoDB instance. API is written in NodeJS. On the right hand you can see GUI, written in Angular, Which pull data from API and display them to the Users.
 
 
@@ -46,7 +46,7 @@ Next enter to this project directory/api and run.
 ```
 docker-compose up
 ```
-It gets you access to the API on API URL=http://localhost:3000/api/v1/. If you want to you can set access to your localhost instance outside.
+It gets you access to the API on API URL=http://localhost:3000/api/v1/. If you want to you can set access to your localhost instance outside. If you want to you can set static IP in this machine and configure your router to forward traffic to this host.
 
 ### Install sensor
 For installation you have to manually install sensor application on your Raspberry board. First firstly connect extension to board.
