@@ -1,4 +1,4 @@
-# Air Parameters Monitor
+# Air Parameters Monitoring
 
 ## Abstract
 The basic assumption for the project was to inform the residents about the current air condition in the room. The information should include three parameters:
