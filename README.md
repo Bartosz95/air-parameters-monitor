@@ -31,8 +31,9 @@ System consists of four components:
 Communication between components works through http interface. It means that every component can be in difference localization and data is sent wireless.
 In the scheme below we can see these four components. On the left we can see a sensor which is built in Raspberry PI with Sense HAT extension. On this programmable board is installed a program written in Python which delivers air parameters to the API. API gets requests from sensors and writes information to MongoDB instances. API is written in NodeJS. On the right hand side you can see the GUI, written in Angular, Which pulls data from the API and displays them to the Users.
 
-
-![](./doc/graphs.png)
+<p align="center">
+<img width="80%" src="doc/sheme.png">
+</p>
 
 ## Installation
 By default you have to install three components: API sensor and GUI. You don't have to install a database because it comes with an API.
@@ -98,7 +99,9 @@ docker-compose up
 ### GUI
 Go to http://localhost/ to open the GUI then you will see page like below. There are three graphs. The Temperature, Pressure and Humidity. New values will appears every 30 seconds. Max variable values on one graph is 30.
 
-![](./doc/diagram.png)
+<p align="center">
+<img width="80%" src="doc/graphs.png">
+</p>
 
 ### API
 
